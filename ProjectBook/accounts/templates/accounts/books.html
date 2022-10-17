@@ -1,0 +1,59 @@
+{% extends 'accounts/main.html' %}
+
+{% load static %}
+
+{% block content %}
+<section class="books">
+    <table border="1">
+        <tr class="first-row">
+            <td class="text-center">Id</td>
+            <td class="text-center">Title</td>
+            <td class="text-center">Genre</td>
+            <td class="text-center">Quantity</td>
+            <td class="text-center">Description</td>
+            <td class="text-center">Thumbnail</td>
+            <td class="text-center">PDF</td>
+            <td class="text-center">Price</td>
+            <td ></td>
+        </tr>
+        
+        
+        {% for x in books %}
+        <tr class="table-child">
+            <td class="text-center">{{ x.id }}</td>
+            <td>{{ x.title }}</td>
+            <td>{{ x.genre }}</td>
+            <td class="text-center">{{ x.quantity }}</td>
+            <td>{{ x.description }}</td>
+
+            <td><img class="thumbnail" src="{% static 'images/mountainchicken.jpg' %}" alt="Logo" srcset=""></td>
+            
+            <td>{{ x.pdf }}</td>
+            <td class="text-center">{{ x.price }}</td>
+            <td class="add">
+                <div style="margin-bottom: 2rem; text-align: center;"><a class="table-button" href="edit/{{ x.id }}">Edit</a></div>
+                <div style="margin-top: 2rem; text-align: center;"><a class="table-button" href="delete/{{ x.id }}">Delete</a></div>
+            </td>
+        </tr>
+        {% endfor %}
+
+        <tr class="last-row">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="add">
+                <div style="margin: 1rem 0rem; text-align: center;">
+                    <a class="table-button" href="add/">Add</a>
+                </div>
+            </td>
+        </tr>
+        
+    </table>
+</section>
+
+{% endblock %}
