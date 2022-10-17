@@ -52,7 +52,7 @@ def logout_user(request):
 #endregion Login/Register
 
 #region home
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
+# @login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
 def home(request):
     books = Book.objects.all()
     context = {'books': books}
