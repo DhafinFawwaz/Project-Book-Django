@@ -1,8 +1,4 @@
-from turtle import pd
-from xml.dom import UserDataHandler
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout # as the name says
 from django.contrib import messages # valid/invalid user message when registering/login
 from django.contrib.auth.decorators import login_required # redirect to login_page if not logged in
