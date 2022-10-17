@@ -18,7 +18,8 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 🔃 following command to run the server locally
+### 🔃 Run Local Server
+Run following command to run the server locally
 ```
 cd ./ProjectBook
 py manage.py runserver
