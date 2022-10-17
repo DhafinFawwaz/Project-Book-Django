@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # fix Error while running '$ python manage.py collectstatic --noinput'.
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -126,7 +126,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles') # to deploy static files
+STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles') # to deploy static files, # fix Error while running '$ python manage.py collectstatic --noinput'.
 STATIC_URL = 'static/'
 
 # Default primary key field type
