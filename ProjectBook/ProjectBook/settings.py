@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'ProjectBook.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql', # previously ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'DEMO_TEST', # previously 'NAME': BASE_DIR / 'db.sqlite3'
+        'USER': 'postgres',
+        'PASSWORD': '2202bti32mokgnep91',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -135,3 +139,6 @@ MEDIA_URL = '/images/' # for images
 STATICFILES_DIRS = [
     Path.joinpath(BASE_DIR, 'static') # for css
 ]
+
+
+MEDIA_ROOT = Path.joinpath(BASE_DIR, 'static/images')

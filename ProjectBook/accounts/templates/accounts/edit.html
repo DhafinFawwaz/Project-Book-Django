@@ -11,9 +11,15 @@
             <br>
         
             Genre:<br>
-            <select name="genre" value="">
+            <select name="genre" value="{{ book.genre }}">
                 {% for x in choices %}
+
+                {% if book.genre == x.0 %}
+                <option selected="selected" value={{ x.0 }}>{{ x.0 }}</option>
+                {% else %}
                 <option value={{ x.0 }}>{{ x.0 }}</option>
+                {% endif %}
+                
                 {% endfor %}
             </select>
             <br>
@@ -38,7 +44,7 @@
             <input name="price" type="number" value="{{ book.price }}"><br>
             <br>
             
-            <input type="submit" value="Edit">
+            <input type="submit" value="Submit">
         </form>
 </section>
 
