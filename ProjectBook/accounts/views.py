@@ -60,16 +60,16 @@ def home(request):
 #endregion home
 
 #region book
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
+# @login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
 def books(request):
     return render(request, 'accounts/books.html')
 
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
+# @login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
 def add(request):
     choices = Book.GENRE_CHOICES
     context = {'choices': choices}
     return render(request, 'accounts/add.html', context)
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
+# @login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
 def addbook(request):
     title = request.POST['title']
     genre = request.POST['genre']
@@ -86,13 +86,13 @@ def addbook(request):
     context = {'books': books}
     return redirect('home') # Go back home
 
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
+# @login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
 def edit(request, id):
     book = Book.objects.get(id=id)
     choices = Book.GENRE_CHOICES
     context = {'book': book, 'choices': choices}
     return render(request, 'accounts/edit.html', context)
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
+# @login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
 def editbook(request, id):
     title = request.POST['title']
     genre = request.POST['genre']
@@ -117,7 +117,7 @@ def editbook(request, id):
     context = {'books': books}
     return redirect('/') # Go back home
 
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
+# @login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
 def delete(request, id):
     book = Book.objects.get(id=id)
     book.delete()
