@@ -144,3 +144,8 @@ STATICFILES_DIRS = [
 
 
 MEDIA_ROOT = Path.joinpath(BASE_DIR, 'static/images')
+
+
+
+import django_heroku
+django_heroku.settings(locals()) # auto database
