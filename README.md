@@ -12,6 +12,8 @@ git clone https://github.com/DhafinFawwaz/Project-Book.git
 cd ./Project-Book
 py -m venv venv
 venv\Scripts\activate.bat
+py -m pip install Django
+py -m pip install Pillow
 py -m pip install -r requirements.txt
 cd ./ProjectBook
 python manage.py makemigrations
