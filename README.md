@@ -14,8 +14,8 @@ py -m venv venv
 venv\Scripts\activate.bat
 py -m pip install Django
 py -m pip install Pillow
-py -m pip install -r requirements.txt
 cd ./ProjectBook
+py -m pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 py manage.py runserver
