@@ -6,17 +6,17 @@ Tugas besar mata kuliah Pengenalan Komputasi Institut Teknologi Bandung. Project
 ## 📖 Instruction
 ### ✨ Getting Started
 
-Run the following command to get started
+Run the following command to get started. The local website is usually http://127.0.0.1:8000/
 ```
 git clone https://github.com/DhafinFawwaz/Project-Book.git
 cd ./Project-Book
 py -m venv venv
 venv\Scripts\activate.bat
-py -m pip install Django
-py -m pip install Pillow
+py -m pip install -r requirements.txt
 cd ./ProjectBook
 python manage.py makemigrations
 python manage.py migrate
+py manage.py runserver
 ```
 
 ### 🔃 Run Local Server
