@@ -9,6 +9,7 @@ Tugas besar mata kuliah Pengenalan Komputasi Institut Teknologi Bandung. Project
 Run the following command to get started
 ```
 git clone https://github.com/DhafinFawwaz/Project-Book.git
+cd ./Project-Book
 py -m venv venv
 venv\Scripts\activate.bat
 py -m pip install Django
