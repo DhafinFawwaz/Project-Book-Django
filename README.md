@@ -6,7 +6,7 @@ Tugas besar mata kuliah Pengenalan Komputasi Institut Teknologi Bandung. Project
 ## 📖 Instruction
 ### ✨ Getting Started
 
-Run the following command to get started. The local website is usually http://127.0.0.1:8000/
+Run the following command to get started. Just copy, paste, execure these commands. The local website is usually http://127.0.0.1:8000/
 ```
 git clone https://github.com/DhafinFawwaz/Project-Book.git
 cd ./Project-Book
