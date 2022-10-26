@@ -1,0 +1,8 @@
+﻿Title : "Pengantar Dasar Matematika"
+Genre : "Mathematic"
+Quantity : 1
+Description: "An introduction to mathematics."
+Price : 75000
+Thumbnail : "./images/PengantarDasarMatematika.jpg"
+Pdf:  "./pdf/PengantarDasarMatematika.pdf"
+Rating: [0, 0, 0, 0, 0]

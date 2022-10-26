@@ -1,0 +1,8 @@
+tiltle: “Digital Planet Beekman”
+genre: “Introduction to Computation”
+quantity: 1
+description: “Completely updated, Tomorrow's Technology and You, provides you with an understanding of information technology so you can successfully navigate change and advance into the future.”
+price: 70000
+thumbnail: “./images/DigitalPlanetBeekman.jpg“
+pdf: “./pdf/DigitalPlanetBeekman.pdf”
+rating: [0, 0, 0, 0, 0]

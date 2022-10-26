@@ -1,0 +1,8 @@
+tiltle: “Kalkulus Purcell Jilid 1”
+genre: “Mathematic”
+quantity: 1
+description: “It's conciseness and clarity helps students focus on, and understand, critical concepts in calculus without them getting bogged down.”
+price: 48000
+thumbnail: “./images/KalkulusPurcellJilid1.jpg“
+pdf: “./pdf/KalkulusPurcellJilid1.pdf”
+rating: [0, 0, 0, 0, 0]

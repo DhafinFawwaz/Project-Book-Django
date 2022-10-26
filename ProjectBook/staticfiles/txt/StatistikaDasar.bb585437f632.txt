@@ -1,0 +1,8 @@
+tiltle: “Statistika Dasar”
+genre: “Mathematic”
+quantity: 1
+description: “This book contains questions and discussions about basic statistics.”
+price: 50000
+thumbnail: “StatistikaDasar./images/.jpg“
+pdf: “StatistikaDasar./pdf/.pdf”
+rating: [0, 0, 0, 0, 0]

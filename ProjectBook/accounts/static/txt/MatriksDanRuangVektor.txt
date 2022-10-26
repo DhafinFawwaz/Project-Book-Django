@@ -1,0 +1,8 @@
+tiltle: “Matriks dan Ruang Vektor”
+genre: “Mathematic”
+quantity: 1
+description: “This book contains problems and discussions about matrices and vector spaces.”
+price: 55000
+thumbnail: “MatriksDanRuangVektor./images/.jpg“
+pdf: “MatriksDanRuangVektor./pdf/.pdf”
+rating: [0, 0, 0, 0, 0]

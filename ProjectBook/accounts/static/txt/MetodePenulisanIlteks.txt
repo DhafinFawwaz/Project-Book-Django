@@ -1,0 +1,8 @@
+tiltle: “Metode Penulisan Ilteks”
+genre: “TTKI”
+quantity: 1
+description: “This book explains how to write a good and correct scientific paper.”
+price: 60000
+thumbnail: “./images/MetodePenulisanIlteks.jpg“
+pdf: “./pdf/MetodePenulisanIlteks.pdf”
+rating: [0, 0, 0, 0, 0]

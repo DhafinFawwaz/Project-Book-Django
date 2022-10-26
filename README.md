@@ -25,6 +25,7 @@ py manage.py runserver
 ### 🔃 Run Local Server
 Run following command to run the server locally
 ```
+venv\Scripts\activate.bat
 cd ./ProjectBook
 py manage.py runserver
 ```

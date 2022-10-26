@@ -1,0 +1,8 @@
+﻿Title : "Pure Mathematics for Beginners: A Rigorous Introduction to Logic, Set Theory, Abstract Algebra, Number Theory, Real Analysis, Topology, Complex Analysis, and Linear Algebra"
+Genre : "Mathematic"
+Quantity : 1
+Description: "Pure Mathematics for Beginners consists of a series of lessons in Logic, Set Theory, Abstract Algebra, Number Theory, Real Analysis, Topology, Complex Analysis, and Linear Algebra. The 16 lessons in this book cover basic through intermediate material from each of these 8 topics. In addition, all the proofwriting skills that are essential for advanced study in mathematics are covered and reviewed extensively."
+Price : 60000
+Thumbnail : "./images/PureMathematicsForBeginner.jpg"
+Pdf:  "./pdf/PureMathematicsForBeginner.pdf"
+Rating: [0, 0, 0, 0, 0]

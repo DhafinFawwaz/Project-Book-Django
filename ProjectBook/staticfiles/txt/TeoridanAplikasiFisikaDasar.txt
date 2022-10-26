@@ -1,0 +1,8 @@
+﻿Title : "Teori dan Aplikasi Fisika Dasar"
+Genre : "physics"
+Quantity : 1
+Description: "In our daily life we ​​cannot be separated from physics, starting from what exists from ourselves such as the motion we do all the time, the energy we use every day to something that is outside of us, such as those in our environment.  At the tertiary level, a student is expected not only to attend lectures well, but more than that, he is also required to explore and master the disciplines he studies so that later it will produce qualified graduates who are able to apply them in real life and benefit the community.."
+Price : 40000
+Thumbnail : "./images/TeoridanAplikasiFisikaDasar.jpg"
+Pdf:  "./pdf/TeoridanAplikasiFisikaDasar.pdf"
+Rating: [0, 0, 0, 0, 0]

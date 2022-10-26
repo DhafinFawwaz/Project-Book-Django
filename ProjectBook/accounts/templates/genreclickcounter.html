@@ -1,0 +1,23 @@
+{% extends 'customers.html' %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static '/css/genreclickcounter.css' %}">
+{% endblock %}
+
+{% block genreclickcounter %}
+<div class="navbar-genre">
+    <div class="title">Genre Click Counter</div>
+    <div class="genre">
+        Math: 1
+    </div>
+    <div class="genre">
+        Physics: 1
+    </div>
+    <div class="genre">
+        Biology: 1
+    </div>
+</div>
+
+{% endblock %}

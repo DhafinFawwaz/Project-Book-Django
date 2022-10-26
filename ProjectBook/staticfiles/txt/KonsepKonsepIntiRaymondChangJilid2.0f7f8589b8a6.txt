@@ -1,0 +1,8 @@
+tiltle: “Konsep-Konsep Inti Raymond Chang Jilid 2”
+genre: “Chemistry”
+quantity: 1
+description: “Aimed at the one-year general chemistry course, Essential Chemistry: A Core Text for General Chemistry offers a shorter, more compact presentation of topics at the same depth and with the same rigor as other traditional "mainstream" texts. Because the text includes only the core topics that are necessary for a good foundation in general chemistry, students are offered a shorter and less expensive text without sacrificing clarity and comprehension.”
+price: 46000
+thumbnail: “./images/KonsepKonsepIntiRaymondChangJilid2.jpg“
+pdf: “./pdf/KonsepKonsepIntiRaymondChangJilid2.pdf”
+rating: [0, 0, 0, 0, 0]

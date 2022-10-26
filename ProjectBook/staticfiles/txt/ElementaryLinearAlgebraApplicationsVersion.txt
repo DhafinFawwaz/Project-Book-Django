@@ -1,0 +1,8 @@
+﻿Title : "Elementary Linear Algebra, Applications Version"
+Genre : Mathematic
+Quantity : 1
+Description: Elementary Linear Algebra 11th edition gives an elementary treatment of linear algebra that is suitable for a first course for undergraduate students. The aim is to present the fundamentals of linear algebra in the clearest possible way; pedagogy is the main consideration. Calculus is not a prerequisite, but there are clearly labeled exercises and examples (which can be omitted without loss of continuity) for students who have studied calculus.
+Price : 90000
+Thumbnail : ./images/ElementaryLinearAlgebraApplicationsVersion.jpg
+Pdf: ./pdf/ElementaryLinearAlgebraApplicationsVersion.pdf
+Rating: [0, 0, 0, 0, 0]

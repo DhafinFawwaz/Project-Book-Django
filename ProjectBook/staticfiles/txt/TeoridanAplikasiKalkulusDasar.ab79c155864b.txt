@@ -1,0 +1,8 @@
+﻿Title : "Teori dan Aplikasi Kalkulus Dasar"
+Genre : "Mathematic"
+Quantity : 1
+Description: "Calculus is a branch of study that studies the problems of change.  The core of the concept of basic calculus is the transformation of numbers used in mathematical calculations.  Broadly speaking, calculus is a very important material in various sciences, including mathematics."
+Price : 40000
+Thumbnail : "./images/TeoridanAplikasiKalkulusDasar.jpg"
+Pdf:  "./pdf/TeoridanAplikasiKalkulusDasar.pdf"
+Rating: [0, 0, 0, 0, 0]

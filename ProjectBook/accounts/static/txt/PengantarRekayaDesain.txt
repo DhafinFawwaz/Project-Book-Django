@@ -1,0 +1,8 @@
+tiltle: “Pengantar Rekaya Desain”
+genre: “—”
+quantity: 1
+description: “An introduction to engineering and design.”
+price: 70000
+thumbnail: “./images/PengantarRekayaDesain.jpg“
+pdf: “./pdf/PengantarRekayaDesain.pdf”
+rating: [0, 0, 0, 0, 0]

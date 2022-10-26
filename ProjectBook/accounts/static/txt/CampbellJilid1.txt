@@ -1,0 +1,8 @@
+tiltle: “Campbell Jilid 1”
+genre: “Biology”
+quantity: 1
+description: “Campbell biology is the world's #1 textbook for beginning biologists. Over 500,000 students worldwide used the Campbell Biology textbook and it has been hugely valuable to me over the years. Studying with Campbell Biology provides a well-rounded and in-depth understanding of the core topics of biology.”
+price: 56000
+thumbnail: “./images/CampbellJilid1.jpg“
+pdf: “./pdf/CampbellJilid1.pdf”
+rating: [0, 0, 0, 0, 0]

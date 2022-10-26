@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+<title>Book Store</title>
+{% endblock %}
+
+<section class="books">
+    <table border="1">
+        <tr class="first-row">
+            <td class="text-center">Id</td>
+            <td class="text-center">Title</td>
+            <td class="text-center">Genre</td>
+            <td class="text-center">Quantity</td>
+            <td class="text-center">Description</td>
+            <td class="text-center">Thumbnail</td>
+            <td class="text-center">PDF</td>
+            <td class="text-center">Price</td>
+            <td ></td>
+        </tr>
+        
+        
+        {% for book in books %}
+        <tr class="table-child">
+            <td class="text-center">{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.genre }}</td>
+            <td class="text-center">{{ book.quantity }}</td>
+            <td>{{ book.description }}</td>
+
+            <td><img class="thumbnail" src="{% static 'images/' %}{{ book.thumbnail }}" alt="{{ book.thumbnail }}" srcset=""></td>
+            
+            <td><a target="_blank" href="{% static 'pdf/' %}{{ book.pdf }}" download="newfilename">{{ book.pdf }}</a></td>
+            <td class="text-center">{{ book.price }}</td>
+            <td class="add">
+                <div style="margin: 1rem 0rem 2rem 0rem; text-align: center;"><a class="table-button" href="edit/{{ book.id }}">Edit</a></div>
+                <div style="margin: 2rem 0rem 1rem 0rem; text-align: center;"><a class="table-button" href="delete/{{ book.id }}">Delete</a></div>
+            </td>
+        </tr>
+        {% endfor %}
+
+        <tr class="last-row">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="add">
+                <div style="margin: 1rem 0rem; text-align: center;">
+                    <a class="table-button" href="add/">Add</a>
+                </div>
+            </td>
+        </tr>
+        
+    </table>
+</section>
+
+{% endblock %}
