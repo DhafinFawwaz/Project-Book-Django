@@ -114,10 +114,9 @@ def home(request):
             products.append(product)
 
     
-    favorite_genre = account_data.favorite_category
 
     # Only 'products': products is usefull, the rest is for debugging    
-    context = {'products': products, 'GENRE_CLICK_COUNT': GENRE_CLICK_COUNT, 'favorite_genre':favorite_genre}
+    context = {'products': products}
     
     
     return render(request, 'home.html', context)
