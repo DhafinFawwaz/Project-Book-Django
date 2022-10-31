@@ -1,8 +1,0 @@
-tiltle: “Fisika Dasar Halliday Jilid 3”
-genre: “Physics”
-quantity: 1
-description: “The classic textbook that builds scientific literacy and logical reasoning ability Principles of Physics, now in its 11th edition, is renowned for teaching students, not just the basic concepts of physics, but also the superior problem-solving skills needed to apply what they have learned.”
-price: 43000
-thumbnail: “./images/FisikaDasarHallidayJilid3.jpg“
-pdf: “./pdf/FisikaDasarHallidayJilid1.pdf”
-rating: [0, 0, 0, 0, 0]

@@ -1,1 +1,1 @@
-web: gunicorn ProjectBook.wsgi --log-file -
+web: gunicorn tubes.wsgi --log-file -

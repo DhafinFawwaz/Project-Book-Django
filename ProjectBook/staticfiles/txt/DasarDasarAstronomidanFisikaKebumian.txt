@@ -1,8 +1,0 @@
-﻿Title : "Dasar-Dasar Astronomi dan Fisika Kebumian"
-Genre : "Physics"
-Quantity : 1
-Description: "This book contains basic knowledge about earth physics and astronomy."
-Price : 40000
-Thumbnail : "./images/DasarDasarAstronomidanFisikaKebumian.jpg"
-Pdf:  "./pdf/DasarDasarAstronomidanFisikaKebumian.pdf"
-Rating: [0, 0, 0, 0, 0]

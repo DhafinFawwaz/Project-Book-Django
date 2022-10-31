@@ -1,8 +1,0 @@
-title: "Halliday Fundamentals of Physics (7th Edition)"
-genre: "Physics"
-quantity: 1
-description: "Easy-to-understand book that offers a solid understanding of fundamental physics concepts."
-price: 80000
-thumbnail: "./images/HallidayFundamentalsOfPhysics7thEdition.jpg"
-pdf: "./pdf/HallidayFundamentalsOfPhysics7thEdition.pdf"
-rating: [0, 0, 0, 0, 0]

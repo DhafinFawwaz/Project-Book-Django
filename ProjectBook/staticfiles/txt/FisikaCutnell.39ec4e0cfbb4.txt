@@ -1,8 +1,0 @@
-tiltle: “Fisika Cutnell”
-genre: “Physics”
-quantity: 1
-description: “Cutnell and Johnson has been the #1 text in the algebra-based physics market for almost 20 years. Physics 9e continues that tradition by providing superior support students need to facilitate a deeper level of conceptual understanding, improve their reasoning skills and see the relevance of physics to their lives and future careers.”
-price: 100000
-thumbnail: “./images/FisikaCutnell.jpg“
-pdf: “./pdf/FisikaCutnell.pdf”
-rating: [0, 0, 0, 0, 0]

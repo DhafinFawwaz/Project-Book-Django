@@ -1,8 +1,0 @@
-tiltle: “Biocalculus”
-genre: “Mathematic”
-quantity: 1
-description: “The chief goal in this textbook is to show students how calculus relates to biology, with a style that maintains rigor without being overly formal. The text motivates and illustrates the topics of calculus with examples drawn from many areas of biology, including genetics, biomechanics, medicine, pharmacology, physiology, ecology, epidemiology, and evolution, to name a few. Particular attention has been paid to ensuring that all applications of the mathematics are genuine, and references to the primary biological literature for many of these has been provided so that students and instructors can explore the applications in greater depth. Although the focus is on the interface between mathematics and the life sciences, the logical structure of the book is motivated by the mathematical material. Students will come away from a course based on this book with a sound knowledge of mathematics and an understanding of the importance of mathematical arguments. Equally important, they will also come away with a clear understanding of how these mathematical concepts and techniques are central in the life sciences.”
-price: 90000
-thumbnail: “./images/Biocalculus.jpg“
-pdf: “./pdf/Biocalculus.pdf”
-rating: [0, 0, 0, 0, 0]

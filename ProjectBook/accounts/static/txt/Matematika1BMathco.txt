@@ -1,8 +1,0 @@
-tiltle: “Matematika 1B Mathco”
-genre: “Mathematic”
-quantity: 1
-description: “This book has a brief explanation of each calculus sub-chapter and contains the previous year's questions as practice.”
-price: 55000
-thumbnail: “Matematika1BMathco./images/.jpg“
-pdf: “Matematika1BMathco./pdf/.pdf”
-rating: [0, 0, 0, 0, 0]

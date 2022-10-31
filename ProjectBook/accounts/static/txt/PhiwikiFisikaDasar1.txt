@@ -1,8 +1,0 @@
-tiltle: “Phiwiki Fisika Dasar 1”
-genre: “Physics”
-quantity: 1
-description: “This book has a brief explanation of each physics sub-chapter and contains the previous year's questions as practice.”
-price: 50000
-thumbnail: “PhiwikiFisikaDasar1./images/.jpg“
-pdf: “PhiwikiFisikaDasar1./pdf/.pdf”
-rating: [0, 0, 0, 0, 0]

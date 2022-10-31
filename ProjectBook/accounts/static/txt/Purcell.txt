@@ -1,8 +1,0 @@
-title: "Purcell Calculus (9th Edition)"
-genre: "Math"
-quantity: 1
-description: "For freshman/sophomore-level courses treating calculus of both one and several variables with additional material on differential equations."
-price: 80000
-thumbnail: "./images/PurcellCalculus9thEdition.jpg"
-pdf: "./pdf/PurcellCalculus9thEdition.pdf"
-rating: [0, 0, 0, 0, 0]

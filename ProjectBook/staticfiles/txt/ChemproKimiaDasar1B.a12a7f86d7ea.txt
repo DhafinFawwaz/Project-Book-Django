@@ -1,8 +1,0 @@
-tiltle: “Chempro Kimia Dasar 1B”
-genre: “Chemistry”
-quantity: 1
-description: “This book has a brief explanation of each chemistry sub-chapter and contains the previous year's questions as practice.”
-price: 50000
-thumbnail: “ChemproKimiaDasar1B./images/.jpg“
-pdf: “ChemproKimiaDasar1B./pdf/.pdf”
-rating: [0, 0, 0, 0, 0]

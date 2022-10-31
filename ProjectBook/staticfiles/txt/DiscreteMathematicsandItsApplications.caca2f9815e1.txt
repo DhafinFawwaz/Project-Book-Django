@@ -1,8 +1,0 @@
-﻿tiltle: "Discrete Mathematics and Its Applications"
-genre: "Mathematic"
-quantity: 1
-description: "Rosen's Discrete Mathematics and its Applications presents a precise, relevant, comprehensive approach to mathematical concepts. This world-renowned best-selling text was written to accommodate the needs across a variety of majors and departments, including mathematics, computer science, and engineering. As the market leader, the book is highly flexible, comprehensive and a proven pedagogical teaching tool for instructors. Digital is becoming increasingly important and gaining popularity, crowning Connect as the digital leader for this discipline."
-price: 140000
-thumbnail: "./images/DiscreteMathematicsandItsApplications.jpg"
-pdf: "./pdf/DiscreteMathematicsandItsApplications.pdf"
-rating: [0, 0, 0, 0, 0]

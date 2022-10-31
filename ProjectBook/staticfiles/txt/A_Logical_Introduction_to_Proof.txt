@@ -1,7 +1,0 @@
-﻿Title : "A Logical Introduction to Proof"
-Genre : Mathematic
-Description: The book is intended for students who want to learn how to prove theorems and be better prepared for the rigors required in more advance mathematics. One of the key components in this textbook is the development of a methodology to lay bare the structure underpinning the construction of a proof, much as diagramming a sentence lays bare its grammatical structure. Diagramming a proof is a way of presenting the relationships between the various parts of a proof. A proof diagram provides a tool for showing students how to write correct mathematical proofs.
-Price : 360000
-Thumbnail : ./images/A_Logical_Introduction_to_Proof.jpg
-Pdf: ./pdf/A_Logical_Introduction_to_Proof.pdf
-Rating: [0, 0, 0, 0, 0]

@@ -1,8 +1,0 @@
-tiltle: “Manusia dan Olahraga”
-genre: “Sports”
-quantity: 1
-description: “This book explains the material about sports.”
-price: 30000
-thumbnail: “./images/ManusiaDanOlahraga.jpg“
-pdf: “./pdf/ManusiaDanOlahraga.pdf”
-rating: [0, 0, 0, 0, 0]

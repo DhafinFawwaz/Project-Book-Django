@@ -1,8 +1,0 @@
-tiltle: “Critical Reading”
-genre: “English”
-quantity: 1
-description: “This book explains some material on critical reading and effective ways to get it.”
-price: 60000
-thumbnail: “./images/CriticalReading.jpg“
-pdf: “./pdf/CriticalReading.pdf”
-rating: [0, 0, 0, 0, 0]

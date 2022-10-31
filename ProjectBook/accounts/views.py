@@ -1,272 +1,179 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout # as the name says
-from django.contrib import messages # valid/invalid user message when registering/login
-from django.contrib.auth.decorators import login_required # redirect to login_page if not logged in
+from .forms import RegistrationForm
+from .models import Account
+from django.contrib import messages, auth
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+
+# buat aktivasi
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import EmailMessage
+
 # Create your views here.
-from .models import *
-from .forms import OrderForm, CreateUserForm
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            phone_number = form.cleaned_data['phone_number']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            username = email.split("@")[0] 
+            user = Account.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password=password)
+            user.phone_number = phone_number
+            user.save()
 
-#region Login/Register
-def register_page(request):
-    if request.user.is_authenticated: # if still user is still logged in (already logged in after closing), redirect immediately
-        return redirect('home')
+            # aktivasi user
+            current_site = get_current_site(request)
+            mail_subject = 'Silahkan aktifkan akun terlebih dahulu.'
+            message = render_to_string('accounts/account_verification_email.html', {
+                'user': user,
+                'domain': current_site,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)), # primary key
+                'token': default_token_generator.make_token(user),
+            })
+            to_email = email
+            send_email = EmailMessage(mail_subject, message, to=[to_email])
+            send_email.send()
+            # messages.success(request, 'Terima kasih sudah mendaftar. Segera cek email Anda!')
+            
+            
+            
+            # ------------- Reccomendation -------------
+            from store.models import AccountData
+            # favorite_genre  = ''
+            account_data = AccountData(username = username, 
+                                phone_number=phone_number, 
+                                email=email, 
+                                favorite_category=request.POST.get('favorite_category'), 
+                                # balance=balance
+                                )
+            account_data.save()
+            # ------------- Reccomendation End -------------
+            
+            
+            return redirect('/accounts/login/?command=verification&email='+email)
+
     else:
-        form = CreateUserForm()
-
-        if request.method == 'POST':
-            form = CreateUserForm(data=request.POST)
-            if form.is_valid():
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request, 'Account was created for ' + user)
-
-
-                username        = user
-                # phone           = request.POST['phone']
-                email           = form.cleaned_data.get('email')
-                # date_created    = request.POST['date_created']
-                favorite_genre  = request.POST.get('favorite_genre')
-                # balance         = request.POST['balance']
-
-                phone           = ''
-                # email           = ''
-                # date_created    = ''
-                # favorite_genre  = ''
-                balance         = 0
-
-                customer = Customer(username = username, phone=phone, email=email, 
-                                    favorite_genre=favorite_genre, balance=balance)
-                customer.save()
-
-
-                return redirect('login')
-            else:
-                messages.info(request, list(form.errors.values())[0])
-
-        context = {'form': form, 'genres': Book.GENRE_CHOICES}
-        return render(request, 'register.html', context)
-
-def login_page(request):
-    if request.user.is_authenticated: # if user is still logged in (already logged in after closing), redirect immediately
-        return redirect('home')
-    else:
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-
-            user = authenticate(request, username=username, password=password)
-
-            if user is not None:
-                login(request, user)
-                return redirect('/')
-            else:
-                messages.info(request, 'Username Or password is incorrect')
-
-        context = {}
-        return render(request, 'login.html', context)
-
-def logout_user(request):
-    logout(request)
+        form = RegistrationForm()
     
+    
+    # ------------- Reccomendation -------------
+    from store.models import AccountData 
+    # ------------- Reccomendation End -------------
+
+    
+    context = {
+        'form': form,
+        'categories': AccountData.GENRE_CHOICES,
+    }
+    return render(request, 'accounts/register.html', context)
+
+def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+
+        user = auth.authenticate(email=email, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'Berhasil login.')
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Invalid login credentials')
+            return redirect('login')
+    return render(request, 'accounts/login.html')
+    
+@login_required(login_url = 'login')
+def logout(request):
+    auth.logout(request)
+    messages.success(request, 'Anda telah keluar.')
     return redirect('login')
 
+def activate(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = Account._default_manager.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, Account.DoesNotExist):
+        user = None
 
-#endregion Login/Register
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, 'Selamat! Akun anda sudah aktif.')
+        return redirect('login')
+    else:
+        messages.error(request, 'Link aktivasi tidak valid')
+        return redirect('register')
 
-#region home
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
-def home(request):
-    books = Book.objects.all()
-    context = {'books': books}
-    return render(request, 'books.html', context)
-#endregion home
+@login_required(login_url = 'login')
+def dashboard(request):
+    return render(request, 'accounts/dashboard.html')
 
-#region book
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
-def books(request):
-    return render(request, 'books.html')
+def forgotPassword(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        if Account.objects.filter(email=email).exists():
+            user = Account.objects.get(email__exact=email)
 
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
-def add(request):
-    choices = Book.GENRE_CHOICES
-    context = {'choices': choices}
+            current_site = get_current_site(request)
+            mail_subject = 'Reset kata sandi akun Anda.'
+            message = render_to_string('accounts/reset_password_email.html', {
+                'user': user,
+                'domain': current_site,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)), # primary key
+                'token': default_token_generator.make_token(user),
+            })
+            to_email = email
+            send_email = EmailMessage(mail_subject, message, to=[to_email])
+            send_email.send()
 
-
-    # [Delete] for dummy data
-    # for i in range(len(Book.GENRE_CHOICES)):
-    #     for j in range(12):
-    #         title = Book.GENRE_CHOICES[i][0]+" dummy "+str(j+1)
-    #         genre = Book.GENRE_CHOICES[i][0]
-    #         quantity = 1
-    #         description = """Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    #         Maecenas aliquet odio commodo, pellentesque nunc id, gravida nunc. Nullam 
-    #         in pretium urna, sed vestibulum nunc. Aliquam erat volutpat. Phasellus non 
-    #         sapien quis velit pretium aliquam aliquet rutrum massa. Mauris scelerisque 
-    #         tincidunt ante, quis commodo ipsum elementum sed. Nunc egestas leo ut velit 
-    #         ultrices mattis. Mauris interdum consectetur velit, quis ultricies lorem 
-    #         pellentesque ut. Donec nec convallis massa. Duis semper pretium consectetur. 
-    #         In hac habitasse platea dictumst."""
-    #         thumbnail = "./static/images/mountainchicken.jpg"
-    #         pdf = "./static/pdf/PDFdummy.pdf"
-    #         price = 50000
-
-    #         book = Book(title=title, genre=genre, quantity=quantity, description=description, thumbnail=thumbnail, pdf=pdf, price=price)
-    #         book.save()
-
-    # [Delete]
+            messages.success(request, 'Link reset kata sandi sudah dikirimkan ke alamat email Anda.')
+            return redirect('login')
 
 
-    return render(request, 'add.html', context)
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
-def addbook(request):
-    title = request.POST['title']
-    genre = request.POST['genre']
-    quantity = request.POST['quantity']
-    description = request.POST['description']
-    thumbnail = request.POST['thumbnail']
-    pdf = request.POST['pdf']
-    price = request.POST['price']
-
-    book = Book(title=title, genre=genre, quantity=quantity, description=description, thumbnail=thumbnail, pdf=pdf, price=price)
-    book.save()
-
-    books = Book.objects.all()
-    context = {'books': books}
-    return redirect('home') # Go back home
-
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
-def edit(request, id):
-    book = Book.objects.get(id=id)
-    choices = Book.GENRE_CHOICES
-    context = {'book': book, 'choices': choices}
-    return render(request, 'edit.html', context)
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
-def editbook(request, id):
-    title = request.POST['title']
-    genre = request.POST['genre']
-    quantity = request.POST['quantity']
-    description = request.POST['description']
-    thumbnail = request.POST['thumbnail']
-    pdf = request.POST['pdf']
-    price = request.POST['price']
-
-    book = Book.objects.get(id=id)
-    book.title = title
-    book.genre = genre
-    book.quantity = quantity
-    book.description = description
-    book.thumbnail = thumbnail
-    book.pdf = pdf
-    book.price = price
-    
-    book.save()
-
-    books = Book.objects.all()
-    context = {'books': books}
-    return redirect('/') # Go back home
-
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
-def delete(request, id):
-    book = Book.objects.get(id=id)
-    book.delete()
-    return redirect('/') # Go back home
-
-#endregion book
-
-#region others
-def supliers(request):
-    return render(request, 'supliers.html')
-
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
-def customers(request):
-    total_show_amount = 12 #
-    reccomendation_show_amount = 9 #
-    # favorite_show_amount will be the rest. There may be a case where favorite_show_amount is 1 higher/lower than expected because of rounding value
-    
-    customer = Customer.objects.get(username=request.user)
-    books = Book.objects.order_by('?').values_list('id', 'genre') # return tuples because more than 1 parameters. order_by('?) makes it random
-    GENRE_CLICK_COUNT = (
-        ('Math'             , customer.Math_click_count),
-        ('Physics'          , customer.Physics_click_count),
-        ('Biology'          , customer.Biology_click_count),
-        ('Economy'          , customer.Economy_click_count),
-        ('Geography'        , customer.Geography_click_count),
-        ('Chemistry'        , customer.Chemistry_click_count),
-        ('English'          , customer.English_click_count),
-        ('Computer Science' , customer.ComputerScience_click_count),
-        ('Other'            , customer.Other_click_count),
-        ('Total'            , customer.Total_click_count),
-    )
-    books_genres = []
-    for book in books:
-        books_genres.append(book[1])
-    
-    books_genres_debug = {i:books_genres.count(i) for i in books_genres}
-    
-    
-    books_reccomended_ids = []
-    shown = 0
-
-    # Reccomendation by click
-    for i in range(len(GENRE_CLICK_COUNT) - 1): # Exclude 'Total'
-        genre_books = tuple(
-            filter(lambda item: item[1] == GENRE_CLICK_COUNT[i][0], books) # item[1] is books genre. GENRE_CLICK_COUNT[i][0] is the current genre to check
-        )
-        amount = round(GENRE_CLICK_COUNT[i][1]/customer.Total_click_count * reccomendation_show_amount)
-        for i in range(amount):
-            if i > len(genre_books)-1:
-                break
-            books_reccomended_ids.append(genre_books[i][0]) # Append only the title
-            shown += 1
-
-    # shuffle
-    from random import shuffle
-    shuffle(books_reccomended_ids)
-    
-    # Reccomendation by favorite genre (the rest)
-    genre_books = tuple(
-        filter(lambda item: item[1] == customer.favorite_genre, books)
-    )
-    i = 0
-    while shown <= total_show_amount:
-        books_reccomended_ids.insert(0, genre_books[i][0]) # Show reccomendation by favorite first. Append only the title.
-        shown += 1
-        i += 1
-
-    # Query by list
-    books_reccomended_unordered = Book.objects.filter(pk__in=books_reccomended_ids).order_by('?')
-    
-    # reorder
-    books_reccomended = []
-    for book in books_reccomended_unordered:
-        if book.genre == customer.favorite_genre:
-            books_reccomended.insert(0, book)
         else:
-            books_reccomended.append(book)
-
+            messages.error(request, 'Akun tidak ada!')
+            return redirect('forgotPassword')
     
-    favorite_genre = customer.favorite_genre
+    return render(request, 'accounts/forgotPassword.html')
+
+def resetpassword_validate(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = Account._default_manager.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, Account.DoesNotExist):
+        user = None
     
-    context = {'books_genres_debug': books_genres_debug, 'books_reccomended': books_reccomended, 'GENRE_CLICK_COUNT': GENRE_CLICK_COUNT, 'favorite_genre':favorite_genre}
-    return render(request, 'customers.html', context)
+    if user is not None and default_token_generator.check_token(user, token):
+        request.session['uid'] = uid
+        messages.success(request, 'Sialhkan reset kata sandi Anda')
+        return redirect('resetPassword')
+    else:
+        messages.error(request, 'Tautan ini kedaluwarsa')
+        return redirect('login')
 
-@login_required(login_url='login') # @ makes it so whenever home(request) get called, login_required is called first then home(request) get called. This makes only logged in user can view this
-def product_detail(request, id):
-    book = Book.objects.get(id=id)
-    customer = Customer.objects.get(username=request.user)
-    
-    if book.genre == 'Math': customer.Math_click_count += 1
-    elif book.genre == 'Physics': customer.Physics_click_count += 1
-    elif book.genre == 'Biology': customer.Biology_click_count += 1
-    elif book.genre == 'Economy': customer.Economy_click_count += 1
-    elif book.genre == 'Geography': customer.Geography_click_count += 1
-    elif book.genre == 'Chemistry': customer.Chemistry_click_count += 1
-    elif book.genre == 'English': customer.English_click_count += 1
-    elif book.genre == 'Computer Science': customer.ComputerScience_click_count += 1
-    elif book.genre == 'Other': customer.Other_click_count += 1
 
-    customer.Total_click_count += 1
-    customer.save()
+def resetPassword(request):
+    if request.method == 'POST':
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
 
-    return redirect('/customers') 
-#endregion others
+        if password == confirm_password:
+            uid = request.session.get('uid')
+            user = Account.objects.get(pk=uid)
+            user.set_password(password)
+            user.save()
+            messages.success(request, 'Reset kata sandi berhasil.')
+            return redirect('login')
+        else:
+            messages.error(request, 'Kata sandi tidak cocok.')
+            return redirect('resetPassword')
+    else:
+        return render(request, 'accounts/resetPassword.html')

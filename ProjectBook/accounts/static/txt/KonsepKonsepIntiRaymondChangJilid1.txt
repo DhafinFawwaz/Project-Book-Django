@@ -1,8 +1,0 @@
-tiltle: “Konsep-Konsep Inti Raymond Chang Jilid 1”
-genre: “Chemistry”
-quantity: 1
-description: “The third edition of "General Chemistry: The Essential Concepts" continues the tradition of presenting only the material that is essential for a one-year general chemistry course. As before, the text includes all the core topics that are necessary for a solid foundation in general chemistry without sacrificing depth, clarity, or rigor. The third edition features new Spartan molecular models, animations correlated to the text, the addition of molecular orbital theory and more. "General Chemistry: The Essential Concepts" is 200 to 300 pages shorter than traditional two-semester textbooks and is much less expensive. Dr. Chang's concise-but-thorough approach will appeal to efficiency-minded instructors and will please value-conscious students.”
-price: 46000
-thumbnail: “./images/KonsepKonsepIntiRaymondChangJilid1.jpg“
-pdf: “./pdf/KonsepKonsepIntiRaymondChangJilid1.pdf”
-rating: [0, 0, 0, 0, 0]

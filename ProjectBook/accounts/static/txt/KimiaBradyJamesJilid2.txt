@@ -1,8 +1,0 @@
-tiltle: “Kimia Brady James Jilid 2”
-genre: “Chemistry”
-quantity: 1
-description: “This text provides the forum for problem solving and concept mastery of chemical phenomena that leads to proficiency and success in the General Chemistry course.”
-price: 56000
-thumbnail: “./images/KimiaBradyJamesJilid2.jpg“
-pdf: “./pdf/KimiaBradyJamesJilid2.pdf”
-rating: [0, 0, 0, 0, 0]

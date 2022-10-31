@@ -1,22 +1,16 @@
 from django.urls import path
 from . import views
 
-# for routing
+
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('add/', views.add, name='add'),
-    path('add/addbook/', views.addbook, name='addbook'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('', views.dashboard, name='dashboard'),
 
-    path('edit/<int:id>', views.edit, name='edit'),
-    path('edit/editbook/<int:id>', views.editbook, name='editbook'),
-    
-    path('delete/<int:id>', views.delete, name='delete'),
-
-    path('books/', views.books, name='books'),
-    path('customers/', views.customers, name='customer'),
-    path('customers/<int:id>', views.product_detail, name='product-detail'),
-
-    path('register/', views.register_page, name='register'),
-    path('login/', views.login_page, name='login'),
-    path('logout/', views.logout_user, name='logout'),
+    path('activate/<uidb64>/<token>/', views.activate, name='activate'),
+    path('forgotPassword/', views.forgotPassword, name='forgotPassword'),
+    path('resetpassword_validate/<uidb64>/<token>/', views.resetpassword_validate, name='resetpassword_validate'),
+    path('resetPassword/', views.resetPassword, name='resetPassword'),
 ]
