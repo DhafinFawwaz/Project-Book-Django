@@ -3,12 +3,17 @@ from store.models import Product, AccountData
 from category.models import Category
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url = 'login')
 def home(request):
-    # ------------- Reccomendation -------------
+
+    total_show_amount = 8
+    reccomendation_show_amount = 8 #
+
+    if request.user.is_authenticated == False:
+        products = Product.objects.order_by('?')[:total_show_amount]
+        context = {'products': products}
+        return render(request, 'home.html', context)
+
 # region reccomendation
-    total_show_amount = 8 # 12
-    reccomendation_show_amount = 8 # orignally 9, but favorite_genre hasn't been implemented yet
     # favorite_show_amount will be the rest. There may be a case where favorite_show_amount is 1 higher/lower than expected because of rounding value
     
     products_id_category = Product.objects.order_by('?').filter(is_available=True).values_list("id", "category") # return tuples because more than 1 parameters. order_by('?) makes it random
@@ -31,11 +36,6 @@ def home(request):
         elif GENRE_CLICK_COUNT[i][0] == 'Other':               GENRE_CLICK_COUNT[i] = (GENRE_CLICK_COUNT[i][0], GENRE_CLICK_COUNT[i][1], account_data.Other_click_count)
     # GENRE_CLICK_COUNT: [(name, id, click_count)]
 
-    
-    products_category = [] # Fill this with only Product.category
-    for product in products_id_category:
-        products_category.append(product[1])
-    
     
     products_reccomended_ids = []
 
@@ -119,9 +119,8 @@ def home(request):
     context = {'products': products}
     
     
+# endregion
     return render(request, 'home.html', context)
-# endregion reccomendation
-    # ------------- Reccomendation End -------------
 
 
     

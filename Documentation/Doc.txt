@@ -1,3 +1,5 @@
+<div class="price mt-1">{{ product.category }}</div>
+
 ---
 use .gitignore to ignore './ProjectBook' folder
 ---
