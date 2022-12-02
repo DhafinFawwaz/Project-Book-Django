@@ -35,23 +35,24 @@ def product_detail(request, category_slug, product_slug):
     try:
         single_product = Product.objects.get(category__slug=category_slug, slug=product_slug)
         in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=single_product).exists()
- 
-    
-        # Reccomendation
-        account_data = AccountData.objects.get(email=request.user)
         
-        if   str(single_product.category) == 'Mathematics': account_data.Math_click_count += 1
-        elif str(single_product.category) == 'Physics': account_data.Physics_click_count += 1
-        elif str(single_product.category) == 'Biology': account_data.Biology_click_count += 1
-        elif str(single_product.category) == 'Economy': account_data.Economy_click_count += 1
-        elif str(single_product.category) == 'Geography': account_data.Geography_click_count += 1
-        elif str(single_product.category) == 'Chemistry': account_data.Chemistry_click_count += 1
-        elif str(single_product.category) == 'English': account_data.English_click_count += 1
-        elif str(single_product.category) == 'Computer-science': account_data.ComputerScience_click_count += 1
-        elif str(single_product.category) == 'Other': account_data.Other_click_count += 1
+        
+        # Reccomendation
+        if request.user.is_authenticated == True:
+            account_data = AccountData.objects.get(email=request.user)
+            
+            if   str(single_product.category) == 'Mathematics': account_data.Math_click_count += 1
+            elif str(single_product.category) == 'Physics': account_data.Physics_click_count += 1
+            elif str(single_product.category) == 'Biology': account_data.Biology_click_count += 1
+            elif str(single_product.category) == 'Economy': account_data.Economy_click_count += 1
+            elif str(single_product.category) == 'Geography': account_data.Geography_click_count += 1
+            elif str(single_product.category) == 'Chemistry': account_data.Chemistry_click_count += 1
+            elif str(single_product.category) == 'English': account_data.English_click_count += 1
+            elif str(single_product.category) == 'Computer-science': account_data.ComputerScience_click_count += 1
+            elif str(single_product.category) == 'Other': account_data.Other_click_count += 1
 
-        account_data.Total_click_count += 1
-        account_data.save()
+            account_data.Total_click_count += 1
+            account_data.save()
     
     
     
