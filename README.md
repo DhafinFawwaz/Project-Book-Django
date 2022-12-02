@@ -1,6 +1,6 @@
 <h1 align="center">Project Book</h1>
 
-Tugas besar mata kuliah Pengenalan Komputasi Institut Teknologi Bandung. Project berupa website eccomerce buku.
+Tugas besar mata kuliah Pengenalan Komputasi Institut Teknologi Bandung. Project berupa website eccomerce buku. Dapat di akses pada https://tubes-eccomerce.herokuapp.com/
 
 
 ## 📖 Instruction
