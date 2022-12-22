@@ -3,7 +3,8 @@
 ![Preview](Images/Preview.png)
 
 Tugas besar mata kuliah Pengenalan Komputasi Institut Teknologi Bandung. Project berupa website eccomerce buku. Dapat di akses pada https://tubes-eccomerce.herokuapp.com/
-Update, heroku sudah tidak gratis lagi, jadi silahkan ikuti instruksi di bawah saja
+<br/>
+Update(October 26): heroku sudah tidak gratis lagi, jadi silahkan ikuti instruksi di bawah saja
 
 ## 📖 Instruction
 ### ✨ Getting Started
