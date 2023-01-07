@@ -7,12 +7,6 @@
 *.md    text eol=lf
 *.yml   text eol=lf
 
-ProjectBook/staticfiles/ linguist-vendored
-ProjectBook/static/ linguist-vendored
 
-ProjectBook/staticfiles/** linguist-vendored
-ProjectBook/static/** linguist-vendored
-
-ProjectBook/static/admin/css/** linguist-vendored
-ProjectBook/staticfiles/fonts/roboto/** linguist-vendored
-ProjectBook/staticfiles/admin/css/** linguist-vendored
+**/staticfiles/** linguist-vendored
+**/static/** linguist-vendored
