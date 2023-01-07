@@ -9,3 +9,6 @@
 
 ProjectBook/staticfiles/ linguist-vendored
 ProjectBook/static/ linguist-vendored
+
+ProjectBook/staticfiles/** linguist-vendored
+ProjectBook/static/** linguist-vendored
